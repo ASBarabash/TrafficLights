@@ -15,30 +15,34 @@ class ViewController: UIViewController {
     @IBOutlet weak var greenSignal: UIView!
     @IBOutlet weak var starButton: UIButton!
     
+    private let lightIsOn: CGFloat = 1
+    private let lightIsOff: CGFloat = 0.3
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        redSignal.alpha = 0.3
-        yellowSignal.alpha = 0.3
-        greenSignal.alpha = 0.3
+        redSignal.alpha = lightIsOff
+        yellowSignal.alpha = lightIsOff
+        greenSignal.alpha = lightIsOff
+        
+        redSignal.layer.cornerRadius = redSignal.frame.width / 2
+        yellowSignal.layer.cornerRadius = yellowSignal.frame.width / 2
+        greenSignal.layer.cornerRadius = greenSignal.frame.width / 2
         
         starButton.layer.cornerRadius = 10
-    
     }
 
     @IBAction func startButtonPress() {
-
-        if redSignal.alpha == 0.3 {
-            redSignal.alpha = 1
-        } else if redSignal.alpha == 1 {
-            redSignal.alpha = 0.3
-            yellowSignal.alpha = 1
-        } else if yellowSignal.alpha == 1 {
-            yellowSignal.alpha = 0.3
-            greenSignal.alpha = 1
-        } else if greenSignal.alpha == 1 {
-            greenSignal.alpha = 0.3
+        starButton.setTitle("NEXT", for: .normal)
+        
+        if redSignal.alpha == lightIsOn {
+            redSignal.alpha = lightIsOff
+            yellowSignal.alpha = lightIsOn
+        } else if yellowSignal.alpha == lightIsOn {
+            yellowSignal.alpha = lightIsOff
+            greenSignal.alpha = lightIsOn
+        } else {
+            redSignal.alpha = lightIsOn
+            greenSignal.alpha = lightIsOff
         }
-    
-}
+    }
 }
