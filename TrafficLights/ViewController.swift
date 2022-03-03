@@ -24,11 +24,13 @@ class ViewController: UIViewController {
         yellowSignal.alpha = lightIsOff
         greenSignal.alpha = lightIsOff
         
+        starButton.layer.cornerRadius = 10
+    }
+    
+    override func viewDidLayoutSubviews() {
         redSignal.layer.cornerRadius = redSignal.frame.width / 2
         yellowSignal.layer.cornerRadius = yellowSignal.frame.width / 2
         greenSignal.layer.cornerRadius = greenSignal.frame.width / 2
-        
-        starButton.layer.cornerRadius = 10
     }
 
     @IBAction func startButtonPress() {
